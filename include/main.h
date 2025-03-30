@@ -3,8 +3,7 @@
 #define MAIN_H 
 
 #include "stm32f3xx_hal.h"
-
-#define LEDS_GPIO_PORT GPIOE
+#include "config.h"
 
 void LedPinsInit();
 void ButtonInit();

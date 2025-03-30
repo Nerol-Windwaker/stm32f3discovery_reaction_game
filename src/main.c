@@ -1,10 +1,9 @@
 #include "stm32f3xx_hal.h"
 #include "main.h"
+#include "config.h"
 
 uint16_t led_gpios[] = {GPIO_PIN_9,  GPIO_PIN_10, GPIO_PIN_11, GPIO_PIN_12,
                         GPIO_PIN_13, GPIO_PIN_14, GPIO_PIN_15, GPIO_PIN_8};
-
-#define WIN_GPIO_IND 0
 
 #define LED_GPIOS_SIZE sizeof(led_gpios) / sizeof(uint16_t)
 
@@ -19,10 +18,6 @@ enum GameState {
   kGameLose
 };
 enum GameState game_state;
-
-#define DIFFICULTY_RANGE_START 6
-#define DIFFICULTY_SPEED_START 50
-#define DIFFICULTY_SPEED_END 30
 
 uint8_t difficulty_range;
 uint16_t difficulty_speed;
@@ -56,7 +51,12 @@ int main() {
 }
 
 void GameInit() {
-  game_state = kWaitStart;
+  if (RUN_SCREENSAVER)
+  {
+    game_state = kWaitStart;   
+  } else {
+    game_state = kPlayingRound;   
+  }
   difficulty_range = DIFFICULTY_RANGE_START;
   difficulty_speed = DIFFICULTY_SPEED_START;
 }
