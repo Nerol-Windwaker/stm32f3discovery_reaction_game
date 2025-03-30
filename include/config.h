@@ -3,7 +3,11 @@
 
 #include "stm32f3xx_hal.h"
 
+<<<<<<< HEAD
 #define RUN_SCREENSAVER 1
+=======
+#define PLAY_SCREENSAVER 1
+>>>>>>> f50e2d457d74afd7cf765b13498c66f932a70238
 #define LEDS_GPIO_PORT GPIOE
 #define WIN_GPIO_IND 0
 
